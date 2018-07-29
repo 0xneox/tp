@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import BurgerMenu from 'react-burger-menu';
 import { Input, Button, Icon, Popup, Label, Table } from 'semantic-ui-react'
+import PopoutWindow from 'react-popout'
 
 class MenuWrap extends Component {
   constructor (props) {
@@ -109,8 +110,11 @@ class App extends Component {
           Go!
         </Button>
         { this.state.showTransactionLabel && <Popup
-            trigger={<Label color='green' horizontal>{this.state.ethereumTransactionCount} Transactions Found</Label>}
+            trigger={<button> <Label color='green' horizontal>{this.state.ethereumTransactionCount} Transactions Found</Label></button>}
             header="Transactions"
+            height="324"
+            width="548"
+            position="right center"
             content={transactionTable}
             hoverable={true}
           /> }
@@ -120,21 +124,20 @@ class App extends Component {
     return addressInputs;
   }
 
+  { this.state.showTransactionLabel && <Popup
+  <Button primary onClick={this.state.ethereumTransactionCount}<Label color='green' horizontal>Transactions Found</Label>
+
+
+
   buildAddAddressButtons() {
     let addAddressButtons = (
       <div>
-        <Button secondary>
-          <Icon name='bitcoin' />
-          BTC
-        </Button>
+
         <Button secondary>
           <Icon name='euro' />
           ETH
         </Button>
-        <Button secondary>
-          <Icon name='dollar' />
-          LTC
-        </Button>
+
       </div>
     )
     return addAddressButtons;
